@@ -1,0 +1,15 @@
+h1 {
+    color : blue;
+    text-shadow: 1px 1px black;
+}
+
+body {
+    background-color: Silver;
+}
+
+img {
+
+    position: fixed;
+    bottom: 5px;
+    right: 10px;
+}
