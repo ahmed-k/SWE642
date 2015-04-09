@@ -84,7 +84,7 @@ Constructors.Validators.Text = function(_regex,_error) {
     var regex = new RegExp(_regex);
     var error = _error;
     function val(obj, identifier) {
-        if (regex.test(obj.node) == false) {
+        if (regex.test(obj.node.value) == false) {
             var _oldval = obj.node.value;
             //clear node value
             obj.node.value="";
@@ -102,15 +102,15 @@ Constructors.Validators.Text = function(_regex,_error) {
 
 Constructors.Validators.Repository = function() {
     var _validators = {};
-    var alphabetOnly = new Constructors.Validators.Text('^[a-zA-Z]$',
+    var alphabetOnly = new Constructors.Validators.Text('^[a-zA-Z]*$',
         "must contain only letters");
-    var alphaNumericOnly = new Constructors.Validators.Text('^[a-zA-Z0-9]$',
+    var alphaNumericOnly = new Constructors.Validators.Text('^[a-zA-Z0-9]*$',
         "must contain only letters or numbers");
-    var zipValidator = new Constructors.Validators.Text('^\d{5}',
+    var zipValidator = new Constructors.Validators.Text('^\\d{5}$',
         "must contain 5 digits only");
     var campusValidator = new Constructors.Validators.Selector('checkbox', 2);
     var recommendationValidator = new Constructors.Validators.Selector('radio', 1);
-    var emailValidator = new Constructors.Validators.Text('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Z]{2,4}$', "email address format is not valid");
+    var emailValidator = new Constructors.Validators.Text('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[A-Za-z]{2,4}$', "email address format is not valid");
 
     _validators['alphabet'] = alphabetOnly; ;
     _validators['alphaNumeric'] = alphaNumericOnly;
@@ -255,8 +255,8 @@ EventHandlers.formSanitizer = function(formEvent) {
     };
 
     function validateName(form) {
-        var firstName = new Constructors.NodeObjects.Text(form, 'firstname', 'alphabet');
-        var lastName = new Constructors.NodeObjects.Text(form,'lastname', 'alphabet');
+        var firstName = new Constructors.NodeObjects.Text(form, 'firstName', 'alphabet');
+        var lastName = new Constructors.NodeObjects.Text(form,'lastName', 'alphabet');
         var result = validateNodes([firstName, lastName]);
         Error.notify(result);
     };
@@ -290,7 +290,10 @@ EventHandlers.formSanitizer = function(formEvent) {
     validateCheckboxes(form);
     validateRadioButtons(form);
     validateEmail(form);
-    Error.flush();
+    //submit if no errors found
+    if (Error.flush() == false) {
+        this.submit();
+    }
 };
 EventHandlers.zipCodeLookup = function() {
     var xmlHttp = new XMLHttpRequest();
@@ -328,8 +331,8 @@ EventHandlers.zipCodeLookup = function() {
 
 
 App.registerEventListeners = function() {
-    var _dataNode = document.getElementsByName("data")[0];
-    _dataNode.addEventListener("blur", EventHandlers.dataSanitizer);
+/*    var _dataNode = document.getElementsByName("data")[0];
+    _dataNode.addEventListener("blur", EventHandlers.dataSanitizer);*/
     var _formNode = document.getElementsByTagName("form")[0];
     _formNode.addEventListener("submit", EventHandlers.formSanitizer);
     var _zipNode = document.getElementsByTagName('input')['zip'];

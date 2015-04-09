@@ -1,7 +1,8 @@
-package survey;
+package survey.processor;
 
 import org.apache.commons.math3.stat.descriptive.moment.Mean;
 import org.apache.commons.math3.stat.descriptive.moment.StandardDeviation;
+import survey.domain.DataBean;
 
 /**
  * Created by Ahmed Alabdullah on 3/31/15.

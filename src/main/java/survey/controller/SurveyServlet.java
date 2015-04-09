@@ -1,6 +1,10 @@
-package survey;
+package survey.controller;
 
 import org.apache.commons.beanutils.BeanUtils;
+import survey.dao.StudentDAO;
+import survey.domain.DataBean;
+import survey.domain.StudentBean;
+import survey.processor.DataProcessor;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,9 +23,10 @@ public class SurveyServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         StudentBean newBean = new StudentBean();
         try {
-            BeanUtils.populate(newBean, req.getParameterMap());
+            Map<String, String[]> params = req.getParameterMap();
+            BeanUtils.populate(newBean, params);
             StudentDAO.saveStudentBean(newBean);
-            String[] raffle = getRaffle(req.getParameterMap());
+            String[] raffle = params.get("raffle");
             DataBean dataBean = DataProcessor.produceDataBean(raffle);
         }
 

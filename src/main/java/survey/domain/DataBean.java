@@ -1,4 +1,4 @@
-package survey;
+package survey.domain;
 
 /**
  * Created by Ahmed Alabdullah on 3/31/15.

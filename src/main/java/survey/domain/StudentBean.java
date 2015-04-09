@@ -1,4 +1,4 @@
-package survey;
+package survey.domain;
 
 /**
  * Created by Ahmed Alabdullah on 3/29/15.
@@ -14,9 +14,9 @@ public class StudentBean {
     public String email;
     public String url;
     public String referralSource;
-    public String campus;
+    public String[] campus;
     public String graduationMonth;
-    public String recommendationLikelikhood;
+    public String recommendationLikelihood;
     public String graduationYear;
     public String additionalComments;
     public String studentID;
@@ -89,11 +89,11 @@ public class StudentBean {
         this.referralSource = referralSource;
     }
 
-    public String getCampus() {
+    public String[] getCampus() {
         return campus;
     }
 
-    public void setCampus(String campus) {
+    public void setCampus(String[] campus) {
         this.campus = campus;
     }
 
@@ -105,12 +105,12 @@ public class StudentBean {
         this.graduationMonth = graduationMonth;
     }
 
-    public String getRecommendationLikelikhood() {
-        return recommendationLikelikhood;
+    public String getRecommendationLikelihood() {
+        return recommendationLikelihood;
     }
 
-    public void setRecommendationLikelikhood(String recommendationLikelikhood) {
-        this.recommendationLikelikhood = recommendationLikelikhood;
+    public void setRecommendationLikelihood(String recommendationLikelihood) {
+        this.recommendationLikelihood = recommendationLikelihood;
     }
 
     public String getGraduationYear() {

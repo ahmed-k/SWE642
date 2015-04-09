@@ -1,4 +1,6 @@
-package survey;
+package survey.dao;
+
+import survey.domain.StudentBean;
 
 import java.io.InputStream;
 import java.sql.*;
@@ -28,8 +30,22 @@ public class StudentDAO {
 
 
     public static void saveStudentBean(StudentBean toSave) {
-       String query = "INSERT INTO SURVEY (FIRSTNAME, LASTNAME, VALUES() ";
-
+       String query = "INSERT INTO SURVEY (FIRSTNAME, LASTNAME, VALUES("AHMED", "KHALID") ";
+        Statement stmt = null;
+        try {
+            stmt = connection.createStatement();
+            stmt.executeUpdate(query);
+        }
+        catch(SQLException sqx) {
+        }
+        finally {
+            try {
+                stmt.close();
+            }
+            catch (SQLException sqx) {
+                sqx.printStackTrace();
+            }
+        }
     }
     public static StudentBean getStudentBean(String _ID) throws SQLException {
         String query = "SELECT * from STUDENTS WHERE STUDENT_ID = '" + _ID + "';";

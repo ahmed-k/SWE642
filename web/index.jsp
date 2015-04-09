@@ -4,7 +4,7 @@
 
 <head>
     <title>Ahmed Alabdullah's GMU CS Department Homepage </title>
-    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
 
 </head>
 
@@ -26,8 +26,8 @@
 <div name="formWrapperTable" >
     <form action="survey" method="POST" autocomplete="on">
         <legend>Feedback Survey</legend>
-        <label>First Name: <input  autofocus required name="firstname" /><br/></label>
-        <label>Last Name: <input required name="lastname" /><br/></label>
+        <label>First Name: <input  autofocus required name="firstName" /><br/></label>
+        <label>Last Name: <input required name="lastName" /><br/></label>
         <label><h4>Address Information:</h4><br/></label>
         <label>Street:<input required name="street"/><br/></label>
         <label>City:<input  readonly="readonly" name="city"/><br/></label>
@@ -35,7 +35,7 @@
         <label>ZIP:<input required name="zip"/>
             <div id="zip_error"></div>
             <br/></label>
-        <label>Telephone:<input name="phone"><br/></label>
+        <label>Telephone:<input name="telephone"><br/></label>
         <label>Email:<input placeholder="e.g. john.smith@domain.com" name="email"><br/></label>
         <label>Personal Website URL: <input placeholder="http://www.yourwebsiteurl.edu" name="url"><br/></label>
         <label>What did you like about the campus?</label><br/>
@@ -60,11 +60,11 @@
             <option value="unlikely">Unlikely</option>
         </select><br/>
         <label>Additional Comments:<br/></label>
-        <textarea placeholder="enter additional comments here..." rows="10" cols="50" name="comments" ></textarea>
+        <textarea placeholder="enter additional comments here..." rows="10" cols="50" name="additionalComments" ></textarea>
         <br/>
 
         <label>Data:<br/></label>
-        <textarea placeholder="enter 10 comma separate numbers" rows ="10" cols="50" name="data"></textarea>
+        <textarea placeholder="enter 10 comma separate numbers" rows ="10" cols="50" name="raffle"></textarea>
         <br/>
         <label>Student ID<input required  name="studentID" /><br/></label>
         <input type="submit" />
@@ -85,7 +85,7 @@
     <option value="November">
     <option value="December">
 </datalist>
-<script type="text/javascript" src="scripts/main.js"> </script >
+<script type="text/javascript" src="/scripts/main.js"> </script >
 </body>
 
 
