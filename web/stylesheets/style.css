@@ -6,10 +6,20 @@ h1 {
 body {
     background-color: Silver;
 }
+input[type=submit] {
+   margin-left: 100px;
+   margin-top : 40px;
+}
 
 img {
 
     position: fixed;
     bottom: 5px;
     right: 10px;
+}
+
+div#formWrapper{
+    column-count: 3;
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
 }

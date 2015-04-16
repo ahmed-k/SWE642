@@ -22,11 +22,12 @@
 <h3>IDs of Students who have completed the survey so far: </h3>
 <ul>
     <%
-        List<String> ids = (List<String>) request.getAttribute("studentIDs");
+        List<String> ids = (List<String>) session.getAttribute("studentIDs");
         for (String id: ids) { %>
             <li> <a href="survey?reqStudentId=<%= id %>"><%= id %></a> </li>
                     <% } %>
 
 </ul>
+<a href="/index.jsp">BACK</a>
 </body>
 </html>

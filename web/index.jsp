@@ -23,7 +23,7 @@
     </ol>
 
 </div>
-<div name="formWrapperTable" >
+<div id ="formWrapper" name="formWrapperTable" >
     <form action="survey" method="POST" autocomplete="on">
         <legend>Feedback Survey</legend>
         <label>First Name: <input  autofocus required name="firstName" /><br/></label>
@@ -67,6 +67,7 @@
         <textarea placeholder="enter 10 comma separate numbers" rows ="10" cols="50" name="raffle"></textarea>
         <br/>
         <label>Student ID<input required  name="studentID" /><br/></label>
+
         <input type="submit" />
     </form>
 </div>

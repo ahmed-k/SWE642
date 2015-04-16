@@ -1,5 +1,7 @@
 package survey.domain;
 
+import survey.util.SurveyStringUtils;
+
 /**
  * Created by Ahmed Alabdullah on 3/29/15.
  */
@@ -20,6 +22,7 @@ public class StudentBean {
     public String graduationYear;
     public String additionalComments;
     public String studentID;
+
 
     public String getFirstName() {
         return firstName;
@@ -138,6 +141,30 @@ public class StudentBean {
     }
 
     public void setFirstName(String firstName) {
+
         this.firstName = firstName;
+    }
+
+    //convenience print methods for JSP's convenience
+    public String printGraduationDate() {
+        if ((graduationMonth == null) || (graduationYear == null)) {
+            return "N/A";
+        }
+        else {
+            return graduationMonth + ", " + graduationYear;
+        }
+    }
+
+    public String printAttribute(String[] attr) {
+        if(attr == null) {
+            return "N/A";
+        }
+        else {
+            return SurveyStringUtils.convertStringArrayToString(attr);
+
+        }
+    }
+    public String printAttribute(String attr) {
+        return (attr == null) ? "N/A" : attr;
     }
 }
