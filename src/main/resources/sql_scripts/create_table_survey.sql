@@ -14,7 +14,7 @@ CREATE TABLE SURVEY
   campus varchar2(250),
   graduation_month varchar2(15),
   graduation_year varchar2(4),
-  recommendation_likelihood varchar2(10),
+  recommendation_likelihood varchar2(15),
   additional_comments  varchar2(1000)
 );
 ALTER TABLE SURVEY ADD(
@@ -29,3 +29,5 @@ For Each ROW
     INTO :new.ROW_ID
     FROM DUAL;
   END ;
+ALTER TABLE SURVEY
+ADD CONSTRAINT uniqueness_constraint UNIQUE(STUDENT_ID);

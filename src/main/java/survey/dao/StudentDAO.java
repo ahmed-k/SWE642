@@ -4,7 +4,12 @@ import survey.domain.StudentBean;
 
 import java.io.InputStream;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
+
+import static survey.util.SurveyStringUtils.convertStringArrayToString;
+import static survey.util.SurveyStringUtils.convertStringToStringArray;
 
 /**
  * Created by Ahmed Alabdullah on 3/29/15.
@@ -34,26 +39,51 @@ public class StudentDAO {
     }
 
 
-    public static String[] convertStringToStringArray(String str) {
-       return str.split(",");
+
+    public static List<String> getAllStudentIDs() throws SQLException {
+        List<String> retv = new ArrayList<String>();
+        String query = "SELECT STUDENT_ID FROM SURVEY";
+        Statement stmt = connection.createStatement();
+
+        ResultSet rs = null;
+        try {
+            rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+                retv.add(rs.getString("STUDENT_ID"));
+            }
+        }
+        finally {
+            try {
+                stmt.close();
+                rs.close();
+            }
+            catch (SQLException sqx) {
+                sqx.printStackTrace();
+            }
+        }
+        return retv;
     }
 
-    public static String convertStringArrayToString(String[] arr) {
-       String retv ="";
-
-       for (String str : arr) {
-           retv+= str+",";
-       }
-
-       //trim trailing comma
-       retv = retv.substring(0, retv.length()-1);
-       return retv;
-    }
-
-
-    public static void saveStudentBean(StudentBean toSave) {
-        String query = "INSERT INTO SURVEY (STUDENT_ID, FIRSTNAME, LASTNAME,STREET, CITY, ZIP, TELEPHONE, EMAIL, URL, REFERRAL_SOURCE, CAMPUS, GRADUATION_MONTH, GRADUATION_YEAR, RECOMMENDATION_LIKELIHOOD, ADDITIONAL_COMMENTS)"+
-                            "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
+    public static void saveStudentBean(StudentBean toSave) throws SQLException {
+        String query = "INSERT INTO SURVEY " +
+                "(" +
+                "STUDENT_ID," +
+                "FIRST_NAME, " +
+                "LAST_NAME," +
+                "STREET," +
+                "CITY, " +
+                "ZIP, " +
+                "TELEPHONE, " +
+                "EMAIL, " +
+                "URL, " +
+                "REFERRAL_SOURCE, " +
+                "CAMPUS, " +
+                "GRADUATION_MONTH, " +
+                "GRADUATION_YEAR, " +
+                "RECOMMENDATION_LIKELIHOOD, " +
+                "ADDITIONAL_COMMENTS)"+
+                "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
         PreparedStatement pstmt = null;
         try {
             pstmt = connection.prepareStatement(query);
@@ -72,11 +102,7 @@ public class StudentDAO {
             pstmt.setString(13, toSave.getGraduationYear());
             pstmt.setString(14, toSave.getRecommendationLikelihood());
             pstmt.setString(15, toSave.getAdditionalComments());
-            pstmt.executeUpdate(query);
-        }
-        catch(SQLException sqx) {
-            System.out.println("Failed to save to database");
-            sqx.printStackTrace();
+            pstmt.executeUpdate();
         }
         finally {
             try {
@@ -87,15 +113,40 @@ public class StudentDAO {
             }
         }
     }
+
+    public static void delete(String _ID) {
+        String query = "DELETE FROM SURVEY WHERE STUDENT_ID ='" + _ID  + "'";
+        Statement stmt = null;
+        try {
+            stmt = connection.createStatement();
+            stmt.execute(query);
+
+        }
+        catch (SQLException sqx) {
+            sqx.printStackTrace();
+        }
+        finally {
+            try {
+                stmt.close();
+            }
+            catch (SQLException sqx) {
+                sqx.printStackTrace();
+            }
+        }
+
+
+    }
+
     public static StudentBean getStudentBean(String _ID) {
-        StudentBean retv = new StudentBean();
-        String query = "SELECT * from AMUHAMM3.SURVEY WHERE STUDENT_ID = '" + _ID + "';";
+        StudentBean retv = null;
+        String query = "SELECT * from SURVEY WHERE STUDENT_ID = '" + _ID + "'";
         Statement stmt = null;
         ResultSet rs = null;
         try {
             stmt = connection.createStatement();
             rs = stmt.executeQuery(query);
             while (rs.next()) {
+                retv = new StudentBean();
                 retv.setStudentID(rs.getString("STUDENT_ID"));
                 retv.setFirstName(rs.getString("FIRST_NAME"));
                 retv.setLastName(rs.getString("LAST_NAME"));
@@ -103,6 +154,7 @@ public class StudentDAO {
                 retv.setStreet(rs.getString("STREET"));
                 retv.setZip(rs.getString("ZIP"));
                 retv.setEmail(rs.getString("EMAIL"));
+                retv.setTelephone(rs.getString("TELEPHONE"));
                 retv.setUrl(rs.getString("URL"));
                 retv.setRecommendationLikelihood(rs.getString("RECOMMENDATION_LIKELIHOOD"));
                 retv.setGraduationMonth(rs.getString("GRADUATION_MONTH"));

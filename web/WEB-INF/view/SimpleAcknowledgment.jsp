@@ -1,0 +1,32 @@
+<%@ page import="java.util.List" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: alabdullahwi
+  Date: 4/15/2015
+  Time: 9:51 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Thank you</title>
+</head>
+<body>
+<jsp:useBean id="dataBean" type="survey.domain.DataBean" scope="session"/>
+<h1>Thank You</h1>
+<p>Thanks for completing this survey.</p>
+<p>
+  Mean: <%= dataBean.getMean() %><br/>
+  Standard Deviation: <%= dataBean.getStdDev() %>
+</p>
+<h3>IDs of Students who have completed the survey so far: </h3>
+<ul>
+  <%
+    List<String> ids = (List<String>) request.getAttribute("studentIDs");
+    for (String id: ids) { %>
+  <li> <a href="survey?reqStudentId=<%= id %>"><%= id %></a> </li>
+  <% } %>
+
+</ul>
+</body>
+</html>
