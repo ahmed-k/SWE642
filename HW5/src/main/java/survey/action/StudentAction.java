@@ -29,10 +29,11 @@ public class StudentAction extends ActionSupport {
     public String getStudentID() {
         return studentID;
     }
-
     public void setStudentID(String studentID) {
         this.studentID = studentID;
-
     }
+
+    public String getBackLink() { return backLink; }
+    public void setBackLink(String backLink) { this.backLink = backLink; }
 
 }

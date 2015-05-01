@@ -1,13 +1,11 @@
 package survey.action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
 import survey.dao.StudentDAO;
 import survey.domain.DataBean;
 import survey.domain.StudentBean;
 import survey.processor.DataProcessor;
 
-import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
@@ -23,7 +21,6 @@ public class SurveyAction extends ActionSupport {
     private String backLink = "/index.jsp";
 
     public String execute() throws Exception {
-        HttpServletRequest req = ServletActionContext.getRequest();
         try {
             dataBean = DataProcessor.produceDataBean(raffle);
             StudentDAO.saveStudentBean(studentBean);
@@ -50,28 +47,21 @@ public class SurveyAction extends ActionSupport {
     public DataBean getDataBean() {
         return dataBean;
     }
-
     public void setDataBean(DataBean dataBean) {
         this.dataBean = dataBean;
     }
-
     public String getRaffle() {
         return raffle;
     }
-
     public void setRaffle(String raffle) {
         this.raffle = raffle;
     }
-
     public StudentBean getStudentBean() {
         return studentBean;
     }
-
     public void setStudentBean(StudentBean studentBean) {
-
         this.studentBean = studentBean;
     }
-
     public String getBackLink() {return backLink; }
     public void setBackLink(String backLink) { this.backLink = backLink; }
 }
