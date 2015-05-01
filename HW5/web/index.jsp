@@ -65,7 +65,7 @@
         <label>Data:<br/></label>
         <textarea placeholder="enter 10 comma separate numbers" rows ="10" cols="50" name="raffle"></textarea>
         <br/>
-        <label>Student ID<input required  name="student.studentID" /><br/></label>
+        <label>Student ID<input required  name="studentBean.studentID" /><br/></label>
 
         <input type="submit" />
     </s:form>

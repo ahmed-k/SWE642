@@ -27,6 +27,7 @@ public class SurveyServlet extends HttpServlet {
 
     public static final String VIEW_ROOT = "WEB-INF/view/";
 
+
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         String nextPage = "";
 

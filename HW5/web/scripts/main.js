@@ -255,21 +255,21 @@ EventHandlers.formSanitizer = function(formEvent) {
     };
 
     function validateName(form) {
-        var firstName = new Constructors.NodeObjects.Text(form, 'firstName', 'alphabet');
-        var lastName = new Constructors.NodeObjects.Text(form,'lastName', 'alphabet');
+        var firstName = new Constructors.NodeObjects.Text(form, 'studentBean.firstName', 'alphabet');
+        var lastName = new Constructors.NodeObjects.Text(form,'studentBean.lastName', 'alphabet');
         var result = validateNodes([firstName, lastName]);
         Error.notify(result);
     };
 
     function validateAddress(form) {
-        var street = new Constructors.NodeObjects.Text(form, 'street', 'alphaNumeric');
-        var city = new Constructors.NodeObjects.Text(form, 'city', 'alphabet');
-        var zip  = new Constructors.NodeObjects.Text(form, 'zip', 'zipRegex');
+        var street = new Constructors.NodeObjects.Text(form, 'studentBean.street', 'alphaNumeric');
+        var city = new Constructors.NodeObjects.Text(form, 'studentBean.city', 'alphabet');
+        var zip  = new Constructors.NodeObjects.Text(form, 'studentBean.zip', 'zipRegex');
         var result = validateNodes([street, city, zip]);
         Error.notify(result);
     };
     function validateEmail(form) {
-        var email = new Constructors.NodeObjects.Text(form, 'email', 'emailRegex');
+        var email = new Constructors.NodeObjects.Text(form, 'studentBean.email', 'emailRegex');
         var result = validateNodes([email]);
         Error.notify(result);
     };
@@ -300,13 +300,13 @@ EventHandlers.zipCodeLookup = function() {
     xmlHttp.onreadystatechange = function() {
         if (xmlHttp.readyState == 4 ) {
             if (xmlHttp.status == 200) {
-                var userZip = document.getElementsByTagName('input')['zip'].value;
+                var userZip = document.getElementsByTagName('input')['studentBean.zip'].value;
                 var json = JSON.parse(xmlHttp.responseText);
                 var _return = json.zipcodes.some(function(el) {
                     if (el.zip === userZip) {
-                        var city = document.getElementsByTagName('input')['city'];
+                        var city = document.getElementsByTagName('input')['studentBean.city'];
                         city.value = el.city;
-                        var state = document.getElementsByTagName('input')['state'];
+                        var state = document.getElementsByTagName('input')['studentBean.state'];
                         state.value = el.state;
                     }
                 });
@@ -335,7 +335,7 @@ App.registerEventListeners = function() {
     _dataNode.addEventListener("blur", EventHandlers.dataSanitizer);*/
     var _formNode = document.getElementsByTagName("form")[0];
     _formNode.addEventListener("submit", EventHandlers.formSanitizer);
-    var _zipNode = document.getElementsByTagName('input')['zip'];
+    var _zipNode = document.getElementsByTagName('input')['studentBean.zip'];
     _zipNode.addEventListener('blur', EventHandlers.zipCodeLookup);
 };
 App.salute = function() {

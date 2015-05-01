@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: alabdullahwi
@@ -13,7 +14,7 @@
 <body>
 
 <h1>ERROR</h1>
-<p><%= request.getAttribute("error")%></p>
-<a href="<%= request.getAttribute("backLink")%>">BACK</a>
+<p><s:actionerror/></p>
+<a href="${backLink}">BACK</a>
 </body>
 </html>

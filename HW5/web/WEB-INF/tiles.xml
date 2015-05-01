@@ -11,6 +11,7 @@
         <put-attribute name="header" value="/WEB-INF/view/template/header.jsp"/>
         <put-attribute name="body"   value="/WEB-INF/view/template/body.jsp"/>
         <put-attribute name="footer"   value="/WEB-INF/view/template/footer.jsp"/>
+        <put-attribute name="studentIDs" value="/WEB-INF/view/template/studentIDs.jsp"/>
     </definition>
 
     <definition name="survey" extends="baseLayout">
@@ -27,12 +28,15 @@
         <put-attribute name="title"  value="Congratulations!"/>
         <put-attribute name="body"   value="/WEB-INF/view/WinnerAcknowledgment.jsp"/>
     </definition>
+
     <definition name="student" extends="baseLayout">
         <put-attribute name="title"  value="Student Details"/>
         <put-attribute name="body"   value="/WEB-INF/view/ShowParticularStudent.jsp"/>
     </definition>
+
     <definition name="error" extends="baseLayout">
         <put-attribute name="title"  value="Error"/>
         <put-attribute name="body"   value="/WEB-INF/view/ErrorPage.jsp"/>
     </definition>
+
 </tiles-definitions>

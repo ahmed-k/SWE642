@@ -9,34 +9,32 @@
 <html>
 <head>
     <title>Student Survey Input: </title>
-  <jsp:useBean  id="currentStudent" type="survey.domain.StudentBean" scope="request"></jsp:useBean>
-
     <ul>Student Survey Feedback
-    <li><strong>Student ID: </strong><%= currentStudent.printAttribute(currentStudent.getStudentID())%></li>
-    <li><strong>First Name: </strong><%= currentStudent.printAttribute(currentStudent.getFirstName())%></li>
-    <li><strong>Last Name: </strong><%= currentStudent.printAttribute(currentStudent.getLastName())%></li>
-    <li><strong>Graduation Date: </strong><%= currentStudent.printGraduationDate()%></li>
+    <li><strong>Student ID: </strong>${student.studentID}</li>
+    <li><strong>First Name: </strong>${student.firstName}</li>
+    <li><strong>Last Name: </strong>${student.lastName}</li>
+    <li><strong>Graduation Date: </strong>${student.graduationDate}</li>
     </ul>
   <ul>Address Information:
-    <li><strong>Street: </strong><%= currentStudent.printAttribute(currentStudent.getStreet())%></li>
-    <li><strong>City: </strong><%= currentStudent.printAttribute(currentStudent.getCity())%></li>
-    <li><strong>ZIP: </strong><%= currentStudent.printAttribute(currentStudent.getZip())%></li>
+    <li><strong>Street: </strong>${student.street}</li>
+    <li><strong>City: </strong>${student.city}</li>
+    <li><strong>ZIP: </strong>${student.zip}</li>
   </ul>
   <ul>Contact Information:
-    <li><strong>Telephone: </strong><%= currentStudent.printAttribute(currentStudent.getTelephone())%></li>
-    <li><strong>Email: </strong><%= currentStudent.printAttribute(currentStudent.getEmail())%></li>
-    <li><strong>URL: </strong><%= currentStudent.printAttribute(currentStudent.getUrl())%></li>
+    <li><strong>Telephone: </strong>${student.telephone}</li>
+    <li><strong>Email: </strong>${student.email}</li>
+    <li><strong>URL: </strong>${student.url}</li>
   </ul>
   <ul>
-    <li><strong>Liked about campus:</strong><%= currentStudent.printAttribute(currentStudent.getCampus())%></li>
-    <li><strong>Heard about university through:</strong><%= currentStudent.printAttribute(currentStudent.getReferralSource())%></li>
-    <li><strong>Recommendation Likelihood:</strong><%= currentStudent.printAttribute(currentStudent.getRecommendationLikelihood())%></li>
-    <li><strong>Additional Comments:</strong><%= currentStudent.printAttribute(currentStudent.getAdditionalComments())%></li>
+    <li><strong>Liked about campus:</strong>${student.campus}</li>
+    <li><strong>Heard about university through:</strong>${student.referralSource}</li>
+    <li><strong>Recommendation Likelihood:</strong>${student.recommendationLikelihood}</li>
+    <li><strong>Additional Comments:</strong>${student.additionalComments}</li>
   </ul>
   <br/>
   <br/>
   <br/>
-  <a href="<%= request.getAttribute("backLink")%>">BACK</a>
+  <a href="${backLink}">BACK</a>
 
 </head>
 <body>

@@ -141,12 +141,11 @@ public class StudentBean {
     }
 
     public void setFirstName(String firstName) {
-
         this.firstName = firstName;
     }
 
     //convenience print methods for JSP's convenience
-    public String printGraduationDate() {
+    public String getGraduationDate() {
         if ((graduationMonth == null) || (graduationYear == null)) {
             return "N/A";
         }

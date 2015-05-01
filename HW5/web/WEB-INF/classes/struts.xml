@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+        <package name="default" namespace="/" extends="struts-default" >
+                <result-types>
+                        <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"/>
+                </result-types>
+                <action name="survey" class="survey.action.SurveyAction" method="execute">
+                        <result name="simple">WEB-INF/view/SimpleAcknowledgment.jsp</result>
+                        <result name="winner">WEB-INF/view/WinnerAcknowledgment.jsp</result>
+                        <result name="error">WEB-INF/view/ErrorPage.jsp</result>
+                </action>
+                <action name="student" class="survey.action.StudentAction" method="execute">
+                       <result name="success">WEB-INF/view/ShowParticularStudent.jsp</result>
+                       <result name="error">WEB-INF/view/ErrorPage.jsp</result>
+                </action>
+        </package>
+</struts>

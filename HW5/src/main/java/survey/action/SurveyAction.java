@@ -8,7 +8,6 @@ import survey.domain.StudentBean;
 import survey.processor.DataProcessor;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
@@ -20,6 +19,7 @@ public class SurveyAction extends ActionSupport {
     private StudentBean studentBean;
     private DataBean dataBean;
     private String raffle;
+    private List<String> studentIDs;
     private String backLink = "/index.jsp";
 
     public String execute() throws Exception {
@@ -27,9 +27,7 @@ public class SurveyAction extends ActionSupport {
         try {
             dataBean = DataProcessor.produceDataBean(raffle);
             StudentDAO.saveStudentBean(studentBean);
-            List<String> studentIDs = StudentDAO.getAllStudentIDs();
-            HttpSession session = req.getSession();
-            session.setAttribute("studentIDs", studentIDs);
+            studentIDs = StudentDAO.getAllStudentIDs();
             if (dataBean.getMean() >= 90) {
                 return "winner";
             } else {
@@ -47,6 +45,8 @@ public class SurveyAction extends ActionSupport {
     }
 
 
+    public List<String> getStudentIDs() { return studentIDs; }
+    public void setStudentIDs(List<String> studentIDs) { this.studentIDs = studentIDs; }
     public DataBean getDataBean() {
         return dataBean;
     }
@@ -68,6 +68,10 @@ public class SurveyAction extends ActionSupport {
     }
 
     public void setStudentBean(StudentBean studentBean) {
+
         this.studentBean = studentBean;
     }
+
+    public String getBackLink() {return backLink; }
+    public void setBackLink(String backLink) { this.backLink = backLink; }
 }
