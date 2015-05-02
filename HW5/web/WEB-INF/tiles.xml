@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <!DOCTYPE tiles-definitions PUBLIC
-        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
-        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 
 <tiles-definitions>
 
     <definition name="baseLayout" template="/WEB-INF/view/template/base.jsp">
-        <put-attribute name="title"  value="Template"/>
+        <put-attribute name="studentList"  value="/WEB-INF/view/template/studentIDs.jsp" cascade="true"/>
+        <put-attribute name="title"  value="Template" />
         <put-attribute name="header" value="/WEB-INF/view/template/header.jsp"/>
         <put-attribute name="body"   value="/WEB-INF/view/template/body.jsp"/>
         <put-attribute name="footer"   value="/WEB-INF/view/template/footer.jsp"/>
-        <put-attribute name="studentIDs" value="/WEB-INF/view/template/studentIDs.jsp"/>
     </definition>
 
     <definition name="survey" extends="baseLayout">
@@ -20,17 +20,17 @@
     </definition>
 
     <definition name="simple" extends="baseLayout">
-        <put-attribute name="title"  value="Simple Acknowledgment"/>
+        <put-attribute name="title"  value="Thank You, Student!" cascade="true" />
         <put-attribute name="body"   value="/WEB-INF/view/SimpleAcknowledgment.jsp"/>
     </definition>
 
     <definition name="winner" extends="baseLayout">
-        <put-attribute name="title"  value="Congratulations!"/>
+        <put-attribute name="title"  value="Congratulations!" cascade="true"/>
         <put-attribute name="body"   value="/WEB-INF/view/WinnerAcknowledgment.jsp"/>
     </definition>
 
     <definition name="student" extends="baseLayout">
-        <put-attribute name="title"  value="Student Details"/>
+        <put-attribute name="title"  value="Student Details" cascade="true"/>
         <put-attribute name="body"   value="/WEB-INF/view/ShowParticularStudent.jsp"/>
     </definition>
 

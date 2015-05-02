@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Thank you</title>
+    <title><tiles:insertAttribute name="title"/></title>
 </head>
 <body>
 <h1>Thank You</h1>
@@ -12,6 +12,6 @@
   Mean: ${dataBean.mean} <br/>
   Standard Deviation: ${dataBean.stdDev}
 </p>
-<tiles:useAttribute name="studentIDs" />
+<tiles:insertAttribute name="studentList" />
 </body>
 </html>

@@ -11,8 +11,8 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <link rel="stylesheet" type="text/css" href="../../../resources/CSS/main.css">
-  <link rel="stylesheet" type="text/css" href="../../../resources/CSS/jquery-ui.css" />
+  <link rel="stylesheet" type="text/css" href="/resources/CSS/main.css">
+  <link rel="stylesheet" type="text/css" href="/resources/CSS/jquery-ui.css" />
   <title><tiles:getAsString name="title"/></title>
 </head>
 <body>

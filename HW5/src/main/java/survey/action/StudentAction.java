@@ -26,6 +26,9 @@ public class StudentAction extends ActionSupport {
     }
 
 
+    public StudentBean getStudent() { return student; }
+    public void setStudent(StudentBean student) { this.student = student; }
+
     public String getStudentID() {
         return studentID;
     }

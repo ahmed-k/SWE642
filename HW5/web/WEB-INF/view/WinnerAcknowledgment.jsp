@@ -14,6 +14,6 @@
 <body>
 <h1>Congratulations!!!</h1>
 <p>You have won the raffle! Your prize is: two movie tickets</p>
-<tiles:useAttribute name="studentIDs" />
+<tiles:useAttribute name="studentList" />
 </body>
 </html>

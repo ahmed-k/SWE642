@@ -26,7 +26,7 @@
     <li><strong>URL: </strong>${student.url}</li>
   </ul>
   <ul>
-    <li><strong>Liked about campus:</strong>${student.campus}</li>
+    <li><strong>Liked about campus:</strong>${student.printAttribute(student.campus)}</li>
     <li><strong>Heard about university through:</strong>${student.referralSource}</li>
     <li><strong>Recommendation Likelihood:</strong>${student.recommendationLikelihood}</li>
     <li><strong>Additional Comments:</strong>${student.additionalComments}</li>

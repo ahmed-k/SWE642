@@ -3,9 +3,10 @@
 <h3>IDs of Students who have completed the survey so far: </h3>
 <ul>
   <c:forEach var ="_student" items="${studentIDs}" >
+    <a href="
     <s:url action="student">
       <s:param name="studentID">${_student}</s:param>
-    </s:url>
+    </s:url>">${_student}</a><br/>
   </c:forEach>
 </ul>
 <a href="/index.jsp">BACK</a>

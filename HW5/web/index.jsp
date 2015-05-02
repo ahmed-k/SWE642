@@ -5,7 +5,7 @@
 
 <head>
     <title>Ahmed Alabdullah's GMU CS Department Homepage </title>
-    <link rel="stylesheet" type="text/css" href="../../web/stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 
 </head>
 
