@@ -14,6 +14,10 @@
 <body>
 <h1>Congratulations!!!</h1>
 <p>You have won the raffle! Your prize is: two movie tickets</p>
-<tiles:useAttribute name="studentList" />
+<p>
+  Mean: ${dataBean.mean} <br/>
+  Standard Deviation: ${dataBean.stdDev}
+</p>
+<tiles:insertAttribute name="studentList" />
 </body>
 </html>

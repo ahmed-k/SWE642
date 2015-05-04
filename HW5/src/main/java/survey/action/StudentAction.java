@@ -10,7 +10,7 @@ import survey.domain.StudentBean;
 public class StudentAction extends ActionSupport {
 
     String studentID;
-    String backLink = "/survey";
+    String backLink = "/index.jsp";
     StudentBean student;
 
     public String execute() throws Exception {
